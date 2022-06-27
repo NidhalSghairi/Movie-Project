@@ -1,11 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import "./App.css";
-import { selectAllMovies } from "./modules/Dashboard.selectors";
+import HomePage from "./pages/Home/Home.component";
 
 function App() {
-  const allMovies = useSelector(selectAllMovies);
-  return <div className="App"></div>;
+  return <HomePage />;
 }
 
 export default App;
