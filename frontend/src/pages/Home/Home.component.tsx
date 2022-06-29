@@ -23,9 +23,9 @@ const HomePage: React.FC = () => {
         handleClose={() => setIsMovieFormOpen(false)}
       />
       <Grid container spacing={6} className={classes.moviesWrapper}>
-        {allMovies.map((movie) => {
+        {allMovies.map((movie, index) => {
           return (
-            <Grid item xs={12} sm={6} md={4} key={movie.title}>
+            <Grid item xs={12} sm={6} md={4} key={`${movie.title} ${index}`}>
               <MovieCard
                 title={movie.title}
                 description={movie.description}

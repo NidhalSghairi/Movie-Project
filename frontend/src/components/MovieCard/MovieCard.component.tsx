@@ -16,7 +16,7 @@ type Props = {
 
 const MovieCard: React.FC<Props> = ({ image, title, description }: Props) => {
   return (
-    <Card>
+    <Card style={{ maxHeight: "350px" }}>
       <CardMedia
         component="img"
         height="140"
