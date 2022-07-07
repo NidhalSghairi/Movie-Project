@@ -5,4 +5,4 @@ from rest_framework import serializers
 class ListAllMoviesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
-        fields = ("title", "description")
+        fields = ("title", "description", "cover_image")
