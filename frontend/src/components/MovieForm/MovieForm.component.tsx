@@ -7,6 +7,9 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useFormik } from "formik";
+import { createNewMovie } from "../../services/api";
+import { addOneMovie } from "../../modules/Dashboard.slice";
+import { useDispatch } from "react-redux";
 
 type MovieFormProps = {
   open: boolean;
@@ -17,23 +20,31 @@ const MovieForm: React.FC<MovieFormProps> = ({
   open,
   handleClose,
 }: MovieFormProps) => {
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       title: "",
       description: "",
+      coverImage: "",
     },
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
     },
   });
+  const handleCreateNewMovie = () => {
+    createNewMovie(formik.values);
+    dispatch(addOneMovie(formik.values));
+    handleClose();
+  };
+
   return (
     <div>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>Ajouter un nouveau film</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            You can create a new movie by entering its title and a short
-            description
+            Vous pouvez ajouter un nouveau film en remplissant les champs
+            suivants:
           </DialogContentText>
           <form onSubmit={formik.handleSubmit}>
             <TextField
@@ -56,11 +67,21 @@ const MovieForm: React.FC<MovieFormProps> = ({
               onChange={formik.handleChange}
               value={formik.values.description}
             />
+            <TextField
+              margin="dense"
+              id="coverImage"
+              label="coverImageUrl"
+              type="text"
+              fullWidth
+              variant="standard"
+              onChange={formik.handleChange}
+              value={formik.values.coverImage}
+            />
           </form>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Submit</Button>
+          <Button onClick={handleCreateNewMovie}>Submit</Button>
         </DialogActions>
       </Dialog>
     </div>

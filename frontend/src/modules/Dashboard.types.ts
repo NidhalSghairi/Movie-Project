@@ -1,7 +1,7 @@
 export type Movie = {
   title: string;
-  years: string;
-  owner: string;
+  years?: string;
+  owner?: string;
   description: string;
   coverImage: string;
 };

@@ -1,8 +1,8 @@
-from .serializers.ListCreateMovieSerializer import ListAllMoviesSerializer
+from .serializers.ListCreateMovieSerializer import ListCreateMoviesSerializer
 from .models.movie import Movie
 from rest_framework import generics
 
 
-class ListAllMoviesView(generics.ListAPIView):
+class ListCreateMoviesView(generics.ListCreateAPIView):
     queryset = Movie.objects.all()
-    serializer_class = ListAllMoviesSerializer
+    serializer_class = ListCreateMoviesSerializer

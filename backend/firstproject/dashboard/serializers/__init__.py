@@ -1,5 +1,5 @@
-from .ListCreateMovieSerializer import ListAllMoviesSerializer
+from .ListCreateMovieSerializer import ListCreateMoviesSerializer
 
 __all__ = [
-    "ListAllMoviesSerializer",
+    "ListCreateMoviesSerializer",
 ]
