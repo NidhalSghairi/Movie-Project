@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import MovieCard from "../../components/MovieCard/MovieCard.component";
 import MovieForm from "../../components/MovieForm/MovieForm.component";
 import { selectAllMovies } from "../../modules/Dashboard.selectors";
-import { useStyles } from "./Home.styles";
+import { useStyles, Container } from "./Home.styles";
 
 const HomePage: React.FC = () => {
   const allMovies = useSelector(selectAllMovies);
@@ -13,10 +13,9 @@ const HomePage: React.FC = () => {
   const [isMovieFormOpen, setIsMovieFormOpen] = useState(false);
 
   return (
-    <>
-      {" "}
+    <Container>
       <Button variant="outlined" onClick={() => setIsMovieFormOpen(true)}>
-        Open form dialog
+        Ajouter un nouveau film
       </Button>
       <MovieForm
         open={isMovieFormOpen}
@@ -35,7 +34,7 @@ const HomePage: React.FC = () => {
           );
         })}
       </Grid>
-    </>
+    </Container>
   );
 };
 
